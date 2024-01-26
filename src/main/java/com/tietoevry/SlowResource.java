@@ -19,7 +19,7 @@ public class SlowResource {
 
     @GET
     @Path("/user/{userId}")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response computeUser(@PathParam("userId") Long id) {
         String key = "[" + id + "]";
 
@@ -33,6 +33,6 @@ public class SlowResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        return Response.ok(user.firstName() + " " + user.surname()).build();
+        return Response.ok(user).build();
     }
 }
