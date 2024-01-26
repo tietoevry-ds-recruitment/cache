@@ -1,14 +1,15 @@
 package com.tietoevry;
 
+import com.tietoevry.dto.PersonDTO;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.QueryParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@Path("/delay")
+import java.util.List;
+import java.util.Map;
+
 @RegisterRestClient (configKey = "external-api")
 public interface ExternalService {
 
     @GET
-    String callMeMaybe(@QueryParam("seconds") int seconds);
+    List<Map<String, PersonDTO>> fetchAllUsers();
 }
